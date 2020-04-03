@@ -1,0 +1,31 @@
+.User {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border: solid 2px rgb(230, 230, 230);
+  margin: 20px;
+  padding: 20px;
+  width: 400px;
+}
+
+.username {
+  font-weight: bold;
+  color: rgb(106, 3, 3);
+}
+
+.space {
+  margin-bottom: 10px;
+}
+.subject {
+  font-weight: bold;
+}
+
+.text {
+  font-weight: normal;
+}
+
+.catchphrase {
+  padding-left: 83px;
+  margin-bottom: 10px;
+  font-style: italic;
+}
