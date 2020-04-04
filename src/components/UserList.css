@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .title {
@@ -20,4 +21,17 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.delete-button {
+  float: right;
+  cursor: pointer;
+  font-size: 12px;
+  width: 110px;
+  padding: 5px 10px;
+  border: solid 1px rgb(230, 230, 230);
+  border-radius: 5px;
+  background-color: rgb(199, 34, 34);
+  color: white;
+  margin: 0px 20px;
 }

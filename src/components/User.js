@@ -45,9 +45,6 @@ class User extends React.Component {
           Website: 
           <span className="text"> {this.state.website}</span>
         </div>
-        <div>
-          <button class="delete-button">Delete user</button>
-        </div>
       </div>
     );
   }
