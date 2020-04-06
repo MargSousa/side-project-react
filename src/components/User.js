@@ -29,7 +29,7 @@ class User extends React.Component {
           <span className="text"> {this.state.email}</span>
         </div>
         <div className="subject">
-          Adress: 
+          Address: 
           <span className="text"> {this.state.street}, {this.state.suite}, {this.state.city}</span>
         </div>
         <div className="subject space">
