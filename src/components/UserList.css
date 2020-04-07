@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 .title {
@@ -22,9 +22,12 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
 
-.button {
-  float: right;
+.button { 
   cursor: pointer;
   font-size: 12px;
   width: 110px;
@@ -35,10 +38,16 @@
 }
 
 .delete-button {
-  background-color: rgb(199, 34, 34);
+  background-color: rgb(197, 83, 83);
   margin: 0px 20px
 }
 
+/*   EDIT USER  */
+
+.edit-button {
+  background-color: rgb(104, 168, 211);
+  display: normal;
+}
 
 /*   NEW USER  */
 
@@ -50,7 +59,8 @@
 }
 
 .new-button {
-  background-color: rgb(23, 122, 23);
+  background-color: rgb(89, 185, 89);
+  display: normal;
 }
 
 .new-user {
@@ -61,15 +71,16 @@
 }
 
 .NewUserForm {
+  background-color: white;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   margin: auto;
-  width: 350px;
+  width: 300px;
   margin: 20px auto;
   border: solid 2px rgb(230, 230, 230);
-  padding: 10px 20px;
+  padding: 20px 20px;
 }
 
 .add-title {
@@ -77,13 +88,13 @@
   margin-bottom: 10px;
 }
 
-.new-user label {
+.label {
   margin: 5px;
   width: 90px;
   display: inline-block;
 }
 
-.new-user input {
+.input {
   margin: 5px 5px 5px 5px;
   display: inline-block;
   width: 140px;

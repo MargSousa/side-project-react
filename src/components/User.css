@@ -6,15 +6,17 @@
   margin: 20px;
   padding: 20px;
   width: 400px;
+  background-color: white;
 }
 
-.username {
+.bold {
   font-weight: bold;
 }
 
 .space {
   margin-bottom: 10px;
 }
+
 .subject {
   font-weight: bold;
 }
@@ -27,4 +29,45 @@
   padding-left: 83px;
   margin-bottom: 10px;
   font-style: italic;
+}
+
+ /* MODE  */
+
+.show {
+  display: normal;
+}
+
+.hidden {
+  display: none;
+}
+
+ /* FORM  */
+
+.name-form {
+  margin-bottom: 3px;
+  font-size: 12px;
+}
+
+.space-left {
+  margin-left: 20px;
+}
+
+.input-street {
+  width: 260px;
+}
+
+.input-zipcode {
+  width: 112px;
+}
+
+.input-city {
+  margin-left: 10px;
+}
+
+.input-phrase {
+  width: 200px;
+}
+
+.input-phrase {
+  width: 200px;
 }

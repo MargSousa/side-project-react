@@ -22,17 +22,15 @@ class UsersList extends React.Component {
       newCompany: '',
       newPhrase: '',
       newSite: '',
-      formFilled: false
+      editMode: true
     };
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.addNewUser = this.addNewUser.bind(this);
-    this.deleteUser = this.deleteUser.bind(this)
+    this.deleteUser = this.deleteUser.bind(this);
+    this.editUsers = this.editUsers.bind(this);
+    this.saveUsers = this.saveUsers.bind(this)
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-  }
 
   handleInputChange(event) {
     let input = event.target.value;
@@ -97,26 +95,25 @@ class UsersList extends React.Component {
     newData[nextItemIndex] = newUser;
 
     this.setState({ 
-      users: newData
+      users: newData,
+      newUsername: '',
+      newName: '',
+      newEmail: '',
+      newStreet: '',
+      newSuite: '',
+      newCity: '',
+      newZipcode: '',
+      newPhone: '',
+      newCompany: '',
+      newPhrase: '',
+      newSite: ''
     });
-
-    this.state.newUsername = '';
-    this.state.newName = '';
-    this.state.newEmail = '';
-    this.state.newStreet = '';
-    this.state.newSuite = '';
-    this.state.newCity = '';
-    this.state.newZipcode = '';
-    this.state.newPhone = '';
-    this.state.newCompany = '';
-    this.state.newPhrase = '';
-    this.state.newSite = '';
   };
     
-
   deleteUser(event) {  
     let newData = this.state.users;
     let userId = event.target.id;
+
     idNumbers.push(userId);  
 
     for (let i = 0; i < idNumbers.length; i++) {
@@ -128,67 +125,103 @@ class UsersList extends React.Component {
     });
   };
 
+  editUsers(event) {  
+
+    let mode = !this.state.editMode;
+
+    this.setState({ 
+      editMode: mode 
+    });    
+
+    console.log(this.state.editMode)
+  };
+
+  saveUsers(event) {
+
+    let mode = !this.state.editMode;
+
+    this.setState({ 
+      editMode: mode 
+    }); 
+
+    console.log(this.state.editMode)
+
+  };
+
+
   render() {
 
     return (  
       <div className="UserList">
         <div className="title">User List</div>
+        <div className="main-buttons">
+          <button id="mode-button" 
+          className={this.state.editMode ? 'hidden' : 'edit-button button'}
+          onClick={this.editUsers}
+          >Edit mode</button>
+
+          <button id="save-button" 
+          className={this.state.editMode ? 'new-button button' : 'hidden'}
+          onClick={this.saveUsers}>Save changes</button>
+        </div>
 
         <div className="list">
           {this.state.users.map(person => (
             <div>
-              <User user={person}/>
-              <button className="delete-button button" id={person.id} onClick={this.deleteUser}>Delete User {person.id}</button>
+              <User user={person} mode={this.state.editMode}/>
+              <div className="buttons">
+                <button className="delete-button button" id={person.id} onClick={this.deleteUser}>Delete User {person.id}</button>
+              </div>
             </div>
           ))}
         </div>
 
         <div className="new-user">
           <div className="title-form">Register a new user</div>
-          <form className="NewUserForm" onSubmit={this.handleSubmit}>
+          <form className="NewUserForm">
               <div>
-                <label htmlFor="username">Username:</label>
-                <input id="username" type="text" value={this.state.newUsername} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="username">Username:</label>
+                <input className="input" id="username" type="text" value={this.state.newUsername} onChange={this.handleInputChange}/>
               </div>
               <div>
-                <label htmlFor="name">Name:</label>
-                <input id="name" type="name" value={this.state.newName} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="name">Name:</label>
+                <input className="input" id="name" type="name" value={this.state.newName} onChange={this.handleInputChange}/>
               </div>
               <div>  
-                <label htmlFor="email">Email:</label>
-                <input id="email" type="text" value={this.state.newEmail} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="email">Email:</label>
+                <input className="input" id="email" type="text" value={this.state.newEmail} onChange={this.handleInputChange}/>
               </div>
               <div>              
-                <label htmlFor="street">Street:</label>
-                <input id="street" type="text" value={this.state.newStreet} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="street">Street:</label>
+                <input className="input" id="street" type="text" value={this.state.newStreet} onChange={this.handleInputChange}/>
               </div>
               <div>
-                <label htmlFor="suite">Suite:</label>
-                <input id="suite" type="text" value={this.state.newSuite} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="suite">Suite:</label>
+                <input className="input" id="suite" type="text" value={this.state.newSuite} onChange={this.handleInputChange}/>
               </div>
               <div>
-                <label htmlFor="city">City:</label>
-                <input id="city" type="text" value={this.state.newCity} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="city">City:</label>
+                <input className="input" id="city" type="text" value={this.state.newCity} onChange={this.handleInputChange}/>
               </div>
               <div>
-                <label htmlFor="zipcode">Zipcode:</label>
-                <input id="zipcode" type="text" value={this.state.newZipcode} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="zipcode">Zipcode:</label>
+                <input className="input" id="zipcode" type="text" value={this.state.newZipcode} onChange={this.handleInputChange}/>
               </div>
               <div>
-                <label htmlFor="phone">Phone:</label>
-                <input id="phone" type="text" value={this.state.newPhone} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="phone">Phone:</label>
+                <input className="input" id="phone" type="text" value={this.state.newPhone} onChange={this.handleInputChange}/>
               </div>
               <div>
-                <label htmlFor="company">Company:</label>
-                <input id="company" type="text" value={this.state.newCompany} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="company">Company:</label>
+                <input className="input" id="company" type="text" value={this.state.newCompany} onChange={this.handleInputChange}/>
               </div>
               <div>
-                <label htmlFor="companyPhrase">Catchphrase:</label>
-                <input id="companyPhrase" type="text" value={this.state.newPhrase} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="companyPhrase">Catchphrase:</label>
+                <input className="input" id="companyPhrase" type="text" value={this.state.newPhrase} onChange={this.handleInputChange}/>
               </div>
               <div>
-                <label htmlFor="site">Website:</label>
-                <input id="site" type="text" value={this.state.newSite} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="site">Website:</label>
+                <input className="input" id="site" type="text" value={this.state.newSite} onChange={this.handleInputChange}/>
               </div>
           </form>
           <div>
