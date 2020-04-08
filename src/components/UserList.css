@@ -22,6 +22,12 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+
+.hidden {
+  display: none;
+}
+
 .buttons {
   display: flex;
   justify-content: flex-end;
@@ -40,13 +46,6 @@
 .delete-button {
   background-color: rgb(197, 83, 83);
   margin: 0px 20px
-}
-
-/*   EDIT USER  */
-
-.edit-button {
-  background-color: rgb(104, 168, 211);
-  display: normal;
 }
 
 /*   NEW USER  */

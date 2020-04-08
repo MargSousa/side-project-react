@@ -21,44 +21,39 @@ class UsersList extends React.Component {
       newPhone: '',
       newCompany: '',
       newPhrase: '',
-      newSite: '',
-      editMode: true
+      newSite: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.addNewUser = this.addNewUser.bind(this);
-    this.deleteUser = this.deleteUser.bind(this);
-    this.editUsers = this.editUsers.bind(this);
-    this.saveUsers = this.saveUsers.bind(this)
+    this.deleteData = this.deleteData.bind(this);
+    this.editData = this.editData.bind(this);
   }
+
+  componentDidMount() {  
+    axios.get(dataUrl)
+    .then(function(response) { return response.data ;})
+    .then(function(usersData) {
+      this.setState({ 
+        users: usersData 
+      });
+
+      console.log(usersData);
+    }.bind(this));
+  };
 
 
   handleInputChange(event) {
-    let input = event.target.value;
-    let inputId = event.target.id;
-  
-    if (inputId === 'username') {
-      this.setState({ newUsername: input });
-    } else if (inputId=== 'name') {
-      this.setState({ newName: input });
-    } else if (inputId === 'email') {
-      this.setState({ newEmail: input });
-    } else if (inputId === 'street') {
-      this.setState({ newStreet: input });
-    } else if (inputId === 'suite') {
-      this.setState({ newSuite: input });
-    } else if (inputId === 'zipcode') {
-      this.setState({ newZipcode: input });
-    } else if (inputId === 'city') {
-      this.setState({ newCity: input });
-    } else if (inputId === 'phone') {
-      this.setState({ newPhone: input });
-    } else if (inputId === 'company') {
-      this.setState({ newCompany: input });
-    } else if (inputId === 'companyPhrase') {
-      this.setState({ newPhrase: input });
-    } else if (inputId === 'site') {
-      this.setState({ newSite: input });
-    }
+    let name = event.target.name;
+    let value = event.target.value;
+
+    this.setState({ [name]: value })
+
+    // let inputId = event.target.id;
+    // if (inputId === 'username') {
+    //   this.setState({ newUsername: input });
+    // } else if (inputId=== 'name') {
+    //   this.setState({ newName: input });
+    // }
   }
   
 
@@ -110,9 +105,10 @@ class UsersList extends React.Component {
     });
   };
     
-  deleteUser(event) {  
+
+  deleteData(user) {  
     let newData = this.state.users;
-    let userId = event.target.id;
+    let userId = user.id;
 
     idNumbers.push(userId);  
 
@@ -125,26 +121,22 @@ class UsersList extends React.Component {
     });
   };
 
-  editUsers(event) {  
 
-    let mode = !this.state.editMode;
+  editData(user) {  
+    //console.log("edit changes:",user)
 
-    this.setState({ 
-      editMode: mode 
-    });    
+    let newData = this.state.users;
+    let userId = user.id;
 
-    console.log(this.state.editMode)
-  };
+    console.log("before",newData);
 
-  saveUsers(event) {
+    newData[userId - 1] = user;
 
-    let mode = !this.state.editMode;
+    console.log("after",newData);
 
     this.setState({ 
-      editMode: mode 
-    }); 
-
-    console.log(this.state.editMode)
+      users: newData 
+    });
 
   };
 
@@ -154,24 +146,11 @@ class UsersList extends React.Component {
     return (  
       <div className="UserList">
         <div className="title">User List</div>
-        <div className="main-buttons">
-          <button id="mode-button" 
-          className={this.state.editMode ? 'hidden' : 'edit-button button'}
-          onClick={this.editUsers}
-          >Edit mode</button>
-
-          <button id="save-button" 
-          className={this.state.editMode ? 'new-button button' : 'hidden'}
-          onClick={this.saveUsers}>Save changes</button>
-        </div>
 
         <div className="list">
           {this.state.users.map(person => (
             <div>
-              <User user={person} mode={this.state.editMode}/>
-              <div className="buttons">
-                <button className="delete-button button" id={person.id} onClick={this.deleteUser}>Delete User {person.id}</button>
-              </div>
+              <User user={person} editUsers={this.editData}  deleteUser={this.deleteData}/>
             </div>
           ))}
         </div>
@@ -231,18 +210,6 @@ class UsersList extends React.Component {
 
       </div>
     );
-  };
-
-  componentDidMount() {  
-    axios.get(dataUrl)
-    .then(function(response) { return response.data ;})
-    .then(function(usersData) {
-      this.setState({ 
-        users: usersData 
-      });
-
-      console.log(usersData);
-    }.bind(this));
   };
 }
 

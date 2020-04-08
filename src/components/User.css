@@ -1,4 +1,5 @@
 .User {
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -33,8 +34,30 @@
 
  /* MODE  */
 
+ .edit-button {
+   background-color: rgb(14, 111, 141);
+   position: absolute;
+   right: 80px;
+   width: 45px !important;
+ }
+
+ .save-button {
+  background-color: rgb(89, 185, 89);
+  position: absolute;
+  right: 80px;
+  width: 45px !important;
+}
+
+ .del-button {
+  background-color: rgb(197, 83, 83);
+  position: absolute;
+  right: 15px;
+  width: 60px !important;
+}
+
+
 .show {
-  display: normal;
+  display: block;
 }
 
 .hidden {
@@ -53,21 +76,22 @@
 }
 
 .input-street {
-  width: 260px;
-}
-
-.input-zipcode {
-  width: 112px;
+  width: 261px;
 }
 
 .input-city {
-  margin-left: 10px;
+  width: 150px;
+}
+
+.input-suite {
+  margin-right: 15px;
 }
 
 .input-phrase {
   width: 200px;
 }
 
-.input-phrase {
+.input-site {
   width: 200px;
+  margin-bottom: 0px;
 }
