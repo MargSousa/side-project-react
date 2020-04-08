@@ -20,47 +20,32 @@ class UsersList extends React.Component {
       newZipcode: '',
       newPhone: '',
       newCompany: '',
-      newPhrase: '',
-      newSite: '',
-      formFilled: false
+      newSite: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.addNewUser = this.addNewUser.bind(this);
-    this.deleteUser = this.deleteUser.bind(this)
+    this.deleteData = this.deleteData.bind(this);
+    this.editData = this.editData.bind(this);
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-  }
+  componentDidMount() {  
+    axios.get(dataUrl)
+    .then(function(response) { return response.data ;})
+    .then(function(usersData) {
+      this.setState({ 
+        users: usersData 
+      });
+
+      console.log(usersData);
+    }.bind(this));
+  };
+
 
   handleInputChange(event) {
-    let input = event.target.value;
-    let inputId = event.target.id;
-  
-    if (inputId === 'username') {
-      this.setState({ newUsername: input });
-    } else if (inputId=== 'name') {
-      this.setState({ newName: input });
-    } else if (inputId === 'email') {
-      this.setState({ newEmail: input });
-    } else if (inputId === 'street') {
-      this.setState({ newStreet: input });
-    } else if (inputId === 'suite') {
-      this.setState({ newSuite: input });
-    } else if (inputId === 'zipcode') {
-      this.setState({ newZipcode: input });
-    } else if (inputId === 'city') {
-      this.setState({ newCity: input });
-    } else if (inputId === 'phone') {
-      this.setState({ newPhone: input });
-    } else if (inputId === 'company') {
-      this.setState({ newCompany: input });
-    } else if (inputId === 'companyPhrase') {
-      this.setState({ newPhrase: input });
-    } else if (inputId === 'site') {
-      this.setState({ newSite: input });
-    }
+    let name = event.target.name;
+    let value = event.target.value;
+
+    this.setState({ [name]: value })
   }
   
 
@@ -76,7 +61,7 @@ class UsersList extends React.Component {
       username: this.state.newUsername,
       email: this.state.newEmail,
       address: {
-        street: this.state.newAddress,
+        street: this.state.newStreet,
         suite: this.state.newSuite,
         city: this.state.newCity, 
         zipcode: this.state.zipcode,
@@ -89,7 +74,7 @@ class UsersList extends React.Component {
       website: this.state.newSite,
       company: {
         name:this.state.newCompany,
-        catchphrase:  this.state.newPhrase,
+        catchphrase:  "Some catchphrase...",
         bs: ""
       },
     }
@@ -97,26 +82,25 @@ class UsersList extends React.Component {
     newData[nextItemIndex] = newUser;
 
     this.setState({ 
-      users: newData
+      users: newData,
+      newUsername: '',
+      newName: '',
+      newEmail: '',
+      newStreet: '',
+      newSuite: '',
+      newCity: '',
+      newZipcode: '',
+      newPhone: '',
+      newCompany: '',
+      newSite: ''
     });
-
-    this.state.newUsername = '';
-    this.state.newName = '';
-    this.state.newEmail = '';
-    this.state.newStreet = '';
-    this.state.newSuite = '';
-    this.state.newCity = '';
-    this.state.newZipcode = '';
-    this.state.newPhone = '';
-    this.state.newCompany = '';
-    this.state.newPhrase = '';
-    this.state.newSite = '';
   };
     
 
-  deleteUser(event) {  
+  deleteData(user) {  
     let newData = this.state.users;
-    let userId = event.target.id;
+    let userId = user.id;
+
     idNumbers.push(userId);  
 
     for (let i = 0; i < idNumbers.length; i++) {
@@ -128,6 +112,20 @@ class UsersList extends React.Component {
     });
   };
 
+
+  editData(user) {  
+    let newData = this.state.users;
+    let userId = user.id;
+
+    newData[userId - 1] = user;
+
+    this.setState({ 
+      users: newData 
+    });
+
+  };
+
+
   render() {
 
     return (  
@@ -137,79 +135,62 @@ class UsersList extends React.Component {
         <div className="list">
           {this.state.users.map(person => (
             <div>
-              <User user={person}/>
-              <button className="delete-button button" id={person.id} onClick={this.deleteUser}>Delete User {person.id}</button>
+              <User user={person} editUsers={this.editData}  deleteUser={this.deleteData}/>
             </div>
           ))}
         </div>
 
         <div className="new-user">
           <div className="title-form">Register a new user</div>
-          <form className="NewUserForm" onSubmit={this.handleSubmit}>
+          <form className="NewUserForm">
               <div>
-                <label htmlFor="username">Username:</label>
-                <input id="username" type="text" value={this.state.newUsername} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="username">Username:</label>
+                <input className="input" id="username" name="newUsername" type="text" value={this.state.newUsername} onChange={this.handleInputChange}/>
               </div>
               <div>
-                <label htmlFor="name">Name:</label>
-                <input id="name" type="name" value={this.state.newName} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="name">Name:</label>
+                <input className="input" id="name" type="text" name="newName" value={this.state.newName} onChange={this.handleInputChange}/>
               </div>
               <div>  
-                <label htmlFor="email">Email:</label>
-                <input id="email" type="text" value={this.state.newEmail} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="email">Email:</label>
+                <input className="input" id="email" type="text" name="newEmail" value={this.state.newEmail} onChange={this.handleInputChange}/>
               </div>
               <div>              
-                <label htmlFor="street">Street:</label>
-                <input id="street" type="text" value={this.state.newStreet} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="street">Street:</label>
+                <input className="input" id="street" type="text" name="newStreet" value={this.state.newStreet} onChange={this.handleInputChange}/>
               </div>
               <div>
-                <label htmlFor="suite">Suite:</label>
-                <input id="suite" type="text" value={this.state.newSuite} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="suite">Suite:</label>
+                <input className="input" id="suite" type="text" name="newSuite" value={this.state.newSuite} onChange={this.handleInputChange}/>
               </div>
               <div>
-                <label htmlFor="city">City:</label>
-                <input id="city" type="text" value={this.state.newCity} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="city">City:</label>
+                <input className="input" id="city" type="text" name="newCity" value={this.state.newCity} onChange={this.handleInputChange}/>
               </div>
               <div>
-                <label htmlFor="zipcode">Zipcode:</label>
-                <input id="zipcode" type="text" value={this.state.newZipcode} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="zipcode">Zipcode:</label>
+                <input className="input" id="zipcode" type="text" name="newZipcode" value={this.state.newZipcode} onChange={this.handleInputChange}/>
               </div>
               <div>
-                <label htmlFor="phone">Phone:</label>
-                <input id="phone" type="text" value={this.state.newPhone} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="phone">Phone:</label>
+                <input className="input" id="phone" type="text" name="newPhone" value={this.state.newPhone} onChange={this.handleInputChange}/>
               </div>
               <div>
-                <label htmlFor="company">Company:</label>
-                <input id="company" type="text" value={this.state.newCompany} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="company">Company:</label>
+                <input className="input" id="company" type="text" name="newCompany" value={this.state.newCompany} onChange={this.handleInputChange}/>
               </div>
               <div>
-                <label htmlFor="companyPhrase">Catchphrase:</label>
-                <input id="companyPhrase" type="text" value={this.state.newPhrase} onChange={this.handleInputChange}/>
-              </div>
-              <div>
-                <label htmlFor="site">Website:</label>
-                <input id="site" type="text" value={this.state.newSite} onChange={this.handleInputChange}/>
+                <label className="label" htmlFor="site">Website:</label>
+                <input className="input" id="site" type="text" name="newSite" value={this.state.newSite} onChange={this.handleInputChange}/>
               </div>
           </form>
           <div>
-            <button className="new-button button" onClick={this.addNewUser}>Add User</button>
+            <button className="add-button button" onClick={this.addNewUser}>Add User</button>
           </div>
         </div>
 
       </div>
     );
-  };
-
-  componentDidMount() {  
-    axios.get(dataUrl)
-    .then(function(response) { return response.data ;})
-    .then(function(usersData) {
-      this.setState({ 
-        users: usersData 
-      });
-
-      console.log(usersData);
-    }.bind(this));
   };
 }
 

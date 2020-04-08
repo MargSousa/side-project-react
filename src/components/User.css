@@ -1,20 +1,29 @@
 .User {
+  position: relative;
+  justify-content: center;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   border: solid 2px rgb(230, 230, 230);
   margin: 20px;
   padding: 20px;
+  min-height: 200px;
   width: 400px;
+  background-color: white;
 }
 
-.username {
+.bold {
   font-weight: bold;
+}
+
+.user-space {
+  margin-bottom: 15px;
 }
 
 .space {
   margin-bottom: 10px;
 }
+
 .subject {
   font-weight: bold;
 }
@@ -27,4 +36,79 @@
   padding-left: 83px;
   margin-bottom: 10px;
   font-style: italic;
+}
+
+ /* MODE  */
+
+ .edit-button {
+   background-color: rgb(14, 111, 141);
+   position: absolute;
+   right: 80px;
+   top: 20px;
+   width: 45px !important;
+ }
+
+ .save-button {
+  background-color: rgb(89, 185, 89);
+  position: absolute;
+  right: 80px;
+  top: 20px;
+  width: 45px !important;
+}
+
+ .del-button {
+  background-color: rgb(197, 83, 83);
+  position: absolute;
+  right: 15px;
+  top: 20px;
+  width: 60px !important;
+}
+
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+ /* FORM  */
+
+.name-form {
+  margin-bottom: 3px;
+  font-size: 13px;
+}
+
+.space-left {
+  margin-left: 20px;
+}
+
+.input-user {
+  margin-bottom: 10px;
+}
+
+.input-name {
+  width: 200px;
+}
+
+.input-street {
+  width: 260px;
+}
+
+.input-city {
+  width: 130px;
+}
+
+.input-suite {
+  margin-right: 15px;
+}
+
+.input-phrase {
+  width: 200px;
+}
+
+.input-site {
+  width: 200px;
+  margin-bottom: 0px;
 }
