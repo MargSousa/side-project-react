@@ -223,7 +223,7 @@ class NewUser extends React.Component {
             />
           </div>
         </form>
-        <div>
+        <div className="buttons">
           <button className="add-button button" onClick={this.addNewUser}>
             Add User
           </button>
