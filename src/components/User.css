@@ -5,8 +5,9 @@
   flex-direction: column;
   flex-wrap: wrap;
   border: solid 2px rgb(230, 230, 230);
+  border-radius: 10px;
   margin: 20px;
-  padding: 20px;
+  padding: 20px 25px 20px 25px;
   min-height: 230px;
   width: 400px;
   background-color: white;
