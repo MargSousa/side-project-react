@@ -1,5 +1,5 @@
 import React from 'react';
-import './User.css'
+import './User.css';
 
 class User extends React.Component {
   constructor(props) {
@@ -16,89 +16,152 @@ class User extends React.Component {
       phone: this.props.user.phone,
       website: this.props.user.website,
       company: this.props.user.company.name,
-      editMode: false
-    }
+      editMode: false,
+    };
   }
 
   handleInputChange = (event) => {
     event.preventDefault();
-
     let name = event.target.name;
     let value = event.target.value;
-    this.setState({ [name]: value })
-  }
+    this.setState({ [name]: value });
+  };
 
   updateUser = (event) => {
-   this.props.editUsers(this.state);
-   this.setState({ editMode: !this.state.editMode})
- }
+    this.props.editUsers(this.state);
+    this.setState({ editMode: !this.state.editMode });
+  };
 
   render() {
-    let  { editMode } = this.state;
+    let { editMode } = this.state;
 
     return (
-      <div className="User" >
-        
-        <button className="edit-button button" onClick={() => this.setState({ editMode: !this.state.editMode})}>Edit</button>
-        <button className="del-button button" onClick={() => this.props.deleteUser(this.state)}>Delete</button>
+      <div className="User">
+        <button
+          className="edit-button button"
+          onClick={() => this.setState({ editMode: !this.state.editMode })}
+        >
+          Edit
+        </button>
+        <button
+          className="del-button button"
+          onClick={() => this.props.deleteUser(this.state)}
+        >
+          Delete
+        </button>
 
         <div className={editMode ? 'hidden' : 'show'}>
-          <div className="bold user-space">User {this.state.id} - {this.state.username}</div>
+          <div className="bold user-space">
+            User {this.state.id} - {this.state.username}
+          </div>
           <div className="subject space">
-            Name: 
+            Name:
             <span className="text"> {this.state.name}</span>
           </div>
           <div className="subject space">
-            Email: 
+            Email:
             <span className="text"> {this.state.email}</span>
           </div>
           <div className="subject space">
-            Address: 
-            <span className="text"> {this.state.street}, {this.state.suite}, {this.state.city}</span>
+            Address:
+            <span className="text">
+              {this.state.street}, {this.state.suite}, {this.state.city}
+            </span>
           </div>
           <div className="subject space">
-            Phone: 
+            Phone:
             <span className="text"> {this.state.phone}</span>
           </div>
           <div className="subject space">
-            Company: 
+            Company:
             <span className="text"> {this.state.company}</span>
           </div>
           <div className="subject">
-            Website: 
+            Website:
             <span className="text"> {this.state.website}</span>
-          </div>    
-        </div> 
+          </div>
+        </div>
 
-        {editMode && 
+        {editMode && (
           <div>
             <form onSubmit={this.updateUser}>
-
-              <button className="save-button button" type="submit">Save</button>
+              <button className="save-button button" type="submit">
+                Save
+              </button>
 
               <label className="bold">Username:</label>
-              <input className="name-form input-user" name="username" value={this.state.username} onChange={this.handleInputChange}></input><br/>
+              <input
+                className="name-form input-user"
+                name="username"
+                value={this.state.username}
+                onChange={this.handleInputChange}
+              ></input>
+              <br />
               <label className="bold">Name: </label>
-              <input className="name-form input-name" name="name" value={this.state.name} onChange={this.handleInputChange}></input><br/>
+              <input
+                className="name-form input-name"
+                name="name"
+                value={this.state.name}
+                onChange={this.handleInputChange}
+              ></input>
+              <br />
               <label className="subject">Email: </label>
-              <input className="name-form input-name" name="email" value={this.state.email} onChange={this.handleInputChange}></input><br/>
+              <input
+                className="name-form input-name"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleInputChange}
+              ></input>
+              <br />
               <label className="subject">Address Street: </label>
-              <input className="name-form input-street" name="street" value={this.state.street} onChange={this.handleInputChange}></input><br/>
+              <input
+                className="name-form input-street"
+                name="street"
+                value={this.state.street}
+                onChange={this.handleInputChange}
+              ></input>
+              <br />
               <label className="subject">Suite: </label>
-              <input className="name-form input-suite" name="suite" value={this.state.suite} onChange={this.handleInputChange}></input>
+              <input
+                className="name-form input-suite"
+                name="suite"
+                value={this.state.suite}
+                onChange={this.handleInputChange}
+              ></input>
               <label className="subject">City: </label>
-              <input className="name-form input-city" name="city" value={this.state.city} onChange={this.handleInputChange}></input><br/>
+              <input
+                className="name-form input-city"
+                name="city"
+                value={this.state.city}
+                onChange={this.handleInputChange}
+              ></input>
+              <br />
               <label className="subject">Phone: </label>
-              <input className="name-form input-phrase" name="phone" value={this.state.phone} onChange={this.handleInputChange}></input><br/>
+              <input
+                className="name-form input-phrase"
+                name="phone"
+                value={this.state.phone}
+                onChange={this.handleInputChange}
+              ></input>
+              <br />
               <label className="subject">Company: </label>
-              <input className="name-form input-phrase" name="company" value={this.state.company} onChange={this.handleInputChange}></input><br/>
+              <input
+                className="name-form input-phrase"
+                name="company"
+                value={this.state.company}
+                onChange={this.handleInputChange}
+              ></input>
+              <br />
               <label className="subject">Website: </label>
-              <input className="name-form  input-site" name="website" value={this.state.website} onChange={this.handleInputChange}></input>
-              
+              <input
+                className="name-form  input-site"
+                name="website"
+                value={this.state.website}
+                onChange={this.handleInputChange}
+              ></input>
             </form>
           </div>
-        }
-
+        )}
       </div>
     );
   }
