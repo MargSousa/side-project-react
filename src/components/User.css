@@ -7,7 +7,7 @@
   border: solid 2px rgb(230, 230, 230);
   margin: 20px;
   padding: 20px;
-  min-height: 200px;
+  min-height: 230px;
   width: 400px;
   background-color: white;
 }
@@ -17,7 +17,7 @@
 }
 
 .user-space {
-  margin-bottom: 15px;
+  margin: 5px 0px 20px 0px;
 }
 
 .space {
@@ -38,17 +38,17 @@
   font-style: italic;
 }
 
- /* MODE  */
+/* MODE  */
 
- .edit-button {
-   background-color: rgb(14, 111, 141);
-   position: absolute;
-   right: 80px;
-   top: 20px;
-   width: 45px !important;
- }
+.edit-button {
+  background-color: rgb(14, 111, 141);
+  position: absolute;
+  right: 80px;
+  top: 20px;
+  width: 45px !important;
+}
 
- .save-button {
+.save-button {
   background-color: rgb(89, 185, 89);
   position: absolute;
   right: 80px;
@@ -56,14 +56,13 @@
   width: 45px !important;
 }
 
- .del-button {
+.del-button {
   background-color: rgb(197, 83, 83);
   position: absolute;
   right: 15px;
   top: 20px;
   width: 60px !important;
 }
-
 
 .show {
   display: block;
@@ -73,7 +72,7 @@
   display: none;
 }
 
- /* FORM  */
+/* FORM  */
 
 .name-form {
   margin-bottom: 3px;
