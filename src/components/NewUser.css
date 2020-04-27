@@ -1,0 +1,60 @@
+.NewUserForm {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: auto;
+}
+
+.new-user-form {
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 300px;
+  margin: 10px 0px 15px 0px;
+  border: solid 2px rgb(230, 230, 230);
+  border-radius: 10px;
+  padding: 20px 10px;
+}
+
+.title-form {
+  margin: 10px 20px 10px 20px;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+}
+
+.new-form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 250px;
+  margin-bottom: 2px;
+}
+
+.new-label {
+  font-weight: bold;
+  width: 90px;
+}
+
+.new-input {
+  width: 150px;
+}
+
+.add-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.new-id {
+  margin: 5px 0px 10px 0px;
+  width: 250px;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.add-button {
+  background-color: rgb(89, 185, 89);
+  margin-bottom: 10px;
+  font-size: 12px;
+  width: 110px;
+}

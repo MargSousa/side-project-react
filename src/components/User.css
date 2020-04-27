@@ -6,10 +6,10 @@
   flex-wrap: wrap;
   border: solid 2px rgb(230, 230, 230);
   border-radius: 10px;
-  margin: 20px;
-  padding: 20px 25px 20px 25px;
-  min-height: 230px;
-  width: 400px;
+  margin: 10px 30px;
+  padding: 15px 25px 20px 25px;
+  min-height: 200px;
+  width: 300px;
   background-color: white;
 }
 
@@ -18,25 +18,20 @@
 }
 
 .user-space {
-  margin: 5px 0px 20px 0px;
+  margin: 30px 0px 10px 0px;
 }
 
 .space {
-  margin-bottom: 10px;
+  margin-bottom: 7px;
 }
 
 .subject {
   font-weight: bold;
+  font-size: 13px;
 }
 
 .text {
   font-weight: normal;
-}
-
-.catchphrase {
-  padding-left: 83px;
-  margin-bottom: 10px;
-  font-style: italic;
 }
 
 /* MODE  */
@@ -45,7 +40,7 @@
   background-color: rgb(14, 111, 141);
   position: absolute;
   right: 80px;
-  top: 20px;
+  top: 15px;
   width: 45px !important;
 }
 
@@ -53,7 +48,7 @@
   background-color: rgb(89, 185, 89);
   position: absolute;
   right: 80px;
-  top: 20px;
+  top: 15px;
   width: 45px !important;
 }
 
@@ -61,7 +56,7 @@
   background-color: rgb(197, 83, 83);
   position: absolute;
   right: 15px;
-  top: 20px;
+  top: 15px;
   width: 60px !important;
 }
 
@@ -73,35 +68,38 @@
   display: none;
 }
 
-/* FORM  */
+/* EDIT FORM  */
 
 .name-form {
-  margin-bottom: 3px;
-  font-size: 13px;
-}
-
-.space-left {
-  margin-left: 20px;
+  margin-bottom: 1px;
+  font-size: 12px;
 }
 
 .input-user {
-  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-top: 30px;
+  width: 150px;
 }
 
 .input-name {
-  width: 200px;
+  margin-left: 5px;
+  width: 178px;
 }
 
 .input-street {
-  width: 260px;
+  margin-left: 1px;
+  width: 240px;
 }
 
 .input-city {
-  width: 130px;
+  margin-left: 6px;
+  width: 120px;
 }
 
 .input-suite {
-  margin-right: 15px;
+  margin-left: 9px;
+  margin-right: 10px;
+  width: 60px;
 }
 
 .input-phrase {
@@ -109,6 +107,12 @@
 }
 
 .input-site {
-  width: 200px;
+  width: 210px;
   margin-bottom: 0px;
+}
+
+@media (max-width: 768px) {
+  .User {
+    margin: 10px 0px;
+  }
 }

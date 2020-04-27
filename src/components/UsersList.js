@@ -84,13 +84,11 @@ class UsersList extends React.Component {
 
         <div className="list">
           {this.state.users.map((person) => (
-            <div>
-              <User
-                user={person}
-                editUsers={this.editData}
-                deleteUser={this.deleteData}
-              />
-            </div>
+            <User
+              user={person}
+              editUsers={this.editData}
+              deleteUser={this.deleteData}
+            />
           ))}
         </div>
 

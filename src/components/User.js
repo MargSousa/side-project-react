@@ -37,19 +37,20 @@ class User extends React.Component {
 
     return (
       <div className="User">
-        <button
-          className="edit-button button"
-          onClick={() => this.setState({ editMode: !this.state.editMode })}
-        >
-          Edit
-        </button>
-        <button
-          className="del-button button"
-          onClick={() => this.props.deleteUser(this.state)}
-        >
-          Delete
-        </button>
-
+        <div>
+          <button
+            className="edit-button button"
+            onClick={() => this.setState({ editMode: !this.state.editMode })}
+          >
+            Edit
+          </button>
+          <button
+            className="del-button button"
+            onClick={() => this.props.deleteUser(this.state)}
+          >
+            Delete
+          </button>
+        </div>
         <div className={editMode ? 'hidden' : 'show'}>
           <div className="bold user-space">
             User {this.state.id} - {this.state.username}
@@ -65,6 +66,7 @@ class User extends React.Component {
           <div className="subject space">
             Address:
             <span className="text">
+              {' '}
               {this.state.street}, {this.state.suite}, {this.state.city}
             </span>
           </div>
@@ -85,10 +87,11 @@ class User extends React.Component {
         {editMode && (
           <div>
             <form onSubmit={this.updateUser}>
-              <button className="save-button button" type="submit">
-                Save
-              </button>
-
+              <div>
+                <button className="save-button button" type="submit">
+                  Save
+                </button>
+              </div>
               <label className="bold">Username:</label>
               <input
                 className="name-form input-user"
@@ -113,7 +116,7 @@ class User extends React.Component {
                 onChange={this.handleInputChange}
               ></input>
               <br />
-              <label className="subject">Address Street: </label>
+              <label className="subject">Street: </label>
               <input
                 className="name-form input-street"
                 name="street"

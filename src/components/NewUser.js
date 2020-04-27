@@ -1,4 +1,5 @@
 import React from 'react';
+import './NewUser.css';
 
 class NewUser extends React.Component {
   constructor(props) {
@@ -31,8 +32,7 @@ class NewUser extends React.Component {
   };
 
   handleInputChange = (event) => {
-    let name = event.target.name;
-    let value = event.target.value;
+    let { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
@@ -43,7 +43,6 @@ class NewUser extends React.Component {
     let getName = this.state.users.filter(
       (user) => user.name === this.state.newName,
     );
-
     if (getUsername.length > 0) {
       alert('That username is already in use, please choose another one.');
     } else if (getName.length > 0) {
@@ -60,7 +59,7 @@ class NewUser extends React.Component {
           street: this.state.newStreet,
           suite: this.state.newSuite,
           city: this.state.newCity,
-          zipcode: this.state.zipcode,
+          zipcode: this.state.newZipcode,
         },
         phone: this.state.newPhone,
         website: this.state.newSite,
@@ -87,138 +86,151 @@ class NewUser extends React.Component {
   };
 
   render() {
+    const {
+      newUsername,
+      newName,
+      newEmail,
+      newStreet,
+      newSuite,
+      newCity,
+      newZipcode,
+      newPhone,
+      newCompany,
+      newSite,
+    } = this.state;
+
     return (
-      <div className="new-user">
+      <div className="NewUserForm">
         <div className="title-form">Register a new user</div>
-        <form className="NewUserForm">
-          <div>
-            <div className="user-id">User {this.props.id}</div>
+        <form className="new-user-form">
+          <div className="new-form">
+            <div className="new-id">User {this.props.id}</div>
           </div>
-          <div>
-            <label className="label">Username:</label>
+          <div className="new-form">
+            <label className="new-label">Username:</label>
             <input
-              className="input"
+              className="new-input"
               id="username"
               name="newUsername"
               type="text"
-              value={this.state.newUsername}
+              value={newUsername}
               onChange={this.handleInputChange}
             />
           </div>
-          <div>
-            <label className="label" htmlFor="name">
+          <div className="new-form">
+            <label className="new-label" htmlFor="name">
               Name:
             </label>
             <input
-              className="input"
+              className="new-input"
               id="name"
               type="text"
               name="newName"
-              value={this.state.newName}
+              value={newName}
               onChange={this.handleInputChange}
             />
           </div>
-          <div>
-            <label className="label" htmlFor="email">
+          <div className="new-form">
+            <label className="new-label" htmlFor="email">
               Email:
             </label>
             <input
-              className="input"
+              className="new-input"
               id="email"
               type="text"
               name="newEmail"
-              value={this.state.newEmail}
+              value={newEmail}
               onChange={this.handleInputChange}
             />
           </div>
-          <div>
-            <label className="label" htmlFor="street">
+          <div className="new-form">
+            <label className="new-label" htmlFor="street">
               Street:
             </label>
             <input
-              className="input"
+              className="new-input"
               id="street"
               type="text"
               name="newStreet"
-              value={this.state.newStreet}
+              value={newStreet}
               onChange={this.handleInputChange}
             />
           </div>
-          <div>
-            <label className="label" htmlFor="suite">
+          <div className="new-form">
+            <label className="new-label" htmlFor="suite">
               Suite:
             </label>
             <input
-              className="input"
+              className="new-input"
               id="suite"
               type="text"
               name="newSuite"
-              value={this.state.newSuite}
+              value={newSuite}
               onChange={this.handleInputChange}
             />
           </div>
-          <div>
-            <label className="label" htmlFor="city">
+          <div className="new-form">
+            <label className="new-label" htmlFor="city">
               City:
             </label>
             <input
-              className="input"
+              className="new-input"
               id="city"
               type="text"
               name="newCity"
-              value={this.state.newCity}
+              value={newCity}
               onChange={this.handleInputChange}
             />
           </div>
-          <div>
-            <label className="label" htmlFor="zipcode">
+          <div className="new-form">
+            <label className="new-label" htmlFor="zipcode">
               Zipcode:
             </label>
             <input
-              className="input"
+              className="new-input"
               id="zipcode"
               type="text"
               name="newZipcode"
-              value={this.state.newZipcode}
+              value={newZipcode}
               onChange={this.handleInputChange}
             />
           </div>
-          <div>
-            <label className="label" htmlFor="phone">
+          <div className="new-form">
+            <label className="new-label" htmlFor="phone">
               Phone:
             </label>
             <input
-              className="input"
+              className="new-input"
               id="phone"
               type="text"
               name="newPhone"
-              value={this.state.newPhone}
+              value={newPhone}
               onChange={this.handleInputChange}
             />
           </div>
-          <div>
-            <label className="label" htmlFor="company">
+          <div className="new-form">
+            <label className="new-label" htmlFor="company">
               Company:
             </label>
             <input
-              className="input"
+              className="new-input"
               id="company"
               type="text"
               name="newCompany"
-              value={this.state.newCompany}
+              value={newCompany}
               onChange={this.handleInputChange}
             />
           </div>
-          <div>
-            <label className="label" htmlFor="site">
+          <div className="new-form">
+            <label className="new-label" htmlFor="site">
               Website:
             </label>
             <input
-              className="input"
+              className="new-input"
               id="site"
               type="text"
               name="newSite"
-              value={this.state.newSite}
+              value={newSite}
               onChange={this.handleInputChange}
             />
           </div>
