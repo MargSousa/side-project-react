@@ -63,20 +63,22 @@ class UsersList extends React.Component {
   deleteData = (user) => {
     let newData = this.state.users;
     let userId = user.id;
-
-    idNumbers.push(userId);
-
-    for (let i = 0; i < idNumbers.length; i++) {
-      delete newData[idNumbers[i] - 1];
-    }
+    const newUsersList = newData.filter((person) => person.id !== userId);
 
     this.setState({
-      users: newData,
+      users: newUsersList,
     });
+
+    console.log(this.state.users);
   };
 
   render() {
-    let nextId = this.state.users.length + 1;
+    let maxId = 0;
+    let ids = this.state.users.forEach((person) => {
+      if (person.id > maxId) {
+        maxId = person.id;
+      }
+    });
 
     return (
       <div className="UserList">
@@ -85,6 +87,7 @@ class UsersList extends React.Component {
         <div className="list">
           {this.state.users.map((person) => (
             <User
+              key={person.id}
               user={person}
               editUsers={this.editData}
               deleteUser={this.deleteData}
@@ -94,7 +97,7 @@ class UsersList extends React.Component {
 
         <hr className="break" />
         <NewUser
-          id={nextId}
+          id={maxId + 1}
           users={this.state.users}
           getNewData={this.getNewUser}
         />
