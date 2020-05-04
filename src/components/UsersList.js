@@ -4,9 +4,6 @@ import User from './User';
 import './UserList.css';
 import NewUser from './NewUser';
 
-const dataUrl = `https://jsonplaceholder.typicode.com/users`;
-let idNumbers = [];
-
 class UsersList extends React.Component {
   constructor(props) {
     super(props);
@@ -28,6 +25,7 @@ class UsersList extends React.Component {
   }
 
   componentDidMount = () => {
+    const dataUrl = `https://jsonplaceholder.typicode.com/users`;
     axios
       .get(dataUrl)
       .then((response) => response.data)
@@ -40,9 +38,7 @@ class UsersList extends React.Component {
 
   getNewUser = (newUser) => {
     let newData = this.state.users;
-    let nextItemIndex = newUser.id - 1;
-
-    newData[nextItemIndex] = newUser;
+    newData[newUser.id - 1] = newUser;
 
     this.setState({
       users: newData,
@@ -51,9 +47,7 @@ class UsersList extends React.Component {
 
   editData = (user) => {
     let newData = this.state.users;
-    let userId = user.id;
-
-    newData[userId - 1] = user;
+    newData[user.id - 1] = user;
 
     this.setState({
       users: newData,
@@ -62,14 +56,10 @@ class UsersList extends React.Component {
 
   deleteData = (user) => {
     let newData = this.state.users;
-    let userId = user.id;
-    const newUsersList = newData.filter((person) => person.id !== userId);
-
+    const newUsersList = newData.filter((person) => person.id !== user.id);
     this.setState({
       users: newUsersList,
     });
-
-    console.log(this.state.users);
   };
 
   render() {
